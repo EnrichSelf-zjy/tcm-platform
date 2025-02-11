@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>养生有道 - 中医药知识库</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-brand">🍵 养生有道</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">首页</a></li>
+            <li><a href="trending.html">方剂大全</a></li>
+            <li><a href="ar.html">药材识别</a></li>
+            <li><a href="forum.html">养生社区</a></li>
+            <li id="authItem"></li>
+        </ul>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="modern-title">🌿 现代本草图鉴</h1>
+            <p class="subtitle">传统智慧 × 现代解读</p>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索中药、方剂、功效...">
+                <button class="btn-modern">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="quick-nav" class="quick-nav-section">
+        <div class="quick-nav-item" onclick="window.location.href='ar.html'">
+            <span class="icon">🔍</span>
+            <span>药材识别</span>
+        </div>
+        <div class="quick-nav-item" onclick="window.location.href='trending.html'">
+            <span class="icon">📋</span>
+            <span>方剂查询</span>
+        </div>
+        <div class="quick-nav-item" onclick="window.location.href='effects.html'">
+            <span class="icon">💊</span>
+            <span>功效检索</span>
+        </div>
+    </section>
+
+    <!-- 中药展示区 -->
+    <section id="herbs" class="content-section">
+        <div class="section-header">
+            <h2 class="gradient-text">探索中药</h2>
+            <div class="filter-tags">
+                <button class="herb-tag-btn active">全部</button>
+                <button class="herb-tag-btn">补气养血</button>
+                <button class="herb-tag-btn">清热解毒</button>
+                <button class="herb-tag-btn">活血化瘀</button>
+            </div>
+        </div>
+        <div class="content-grid" id="herbsContainer"></div>
+    </section>
+
+    <!-- 方剂展示区 -->
+    <section id="formulas" class="content-section">
+        <div class="section-header">
+            <h2 class="gradient-text">经典方剂</h2>
+            <div class="filter-tags">
+                <button class="formula-tag-btn active">全部</button>
+                <button class="formula-tag-btn">传统经方</button>
+                <button class="formula-tag-btn">网红养生方</button>
+            </div>
+        </div>
+        <div class="content-grid" id="formulasContainer"></div>
+    </section>
+
+    <section class="recommend-section">
+        <h2>💡 智能推荐</h2>
+        <div id="recommendations"></div>
+    </section>
+
+    <script src="data.js"></script>
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // 确保auth系统初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initAuth();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1073 @@
+/* AR页面样式 */
+.ar-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.ar-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card-gradient);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+#arVideo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#arCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.status-text {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.error-panel {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.herb-info-panel {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--card-gradient);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.control-panel {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.instruction-panel {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(42, 157, 143, 0.1);
+    border-radius: 12px;
+}
+
+.instruction-panel h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.instruction-panel ol {
+    padding-left: 1.5rem;
+}
+
+.instruction-panel li {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .ar-wrapper {
+        border-radius: 0;
+    }
+
+    .control-panel {
+        flex-direction: column;
+        padding: 0 1rem;
+    }
+
+    .btn-modern {
+        width: 100%;
+    }
+}
+
+/* 药材识别页面样式 */
+.ar-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* 识别区域 */
+.recognition-section {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.recognition-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* 上传区域 */
+.upload-area {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    margin: 0 auto 2rem;
+    border: 2px dashed rgba(42, 157, 143, 0.3);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-image: url('../assets/icons/upload.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 48px;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background: rgba(42, 157, 143, 0.05);
+}
+
+.upload-area.dragover {
+    border-color: var(--primary-color);
+    background: rgba(42, 157, 143, 0.1);
+}
+
+.upload-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.upload-placeholder .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.upload-hint {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+#previewImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 上传图标样式 */
+.upload-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* 识别结果 */
+.result-section {
+    background: var(--card-gradient);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.result-content {
+    margin: 2rem 0;
+}
+
+.result-item {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.result-item .label {
+    width: 100px;
+    color: #666;
+}
+
+.result-item .value {
+    flex: 1;
+    color: var(--text-color);
+}
+
+.result-detail {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* 历史记录 */
+.history-section {
+    margin-top: 3rem;
+}
+
+.history-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.history-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 180px;
+    overflow: hidden;
+}
+
+.history-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.history-image {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.history-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.history-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.history-result {
+    padding: 0.8rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+    margin-bottom: 0.8rem;
+}
+
+.history-result:not(:first-child) {
+    display: none;
+}
+
+.expanded .history-result {
+    display: block;
+}
+
+.history-result h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.history-time {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* 加载动画 */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(42, 157, 143, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .ar-container {
+        padding: 0 1rem;
+    }
+
+    .upload-area {
+        height: 200px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .history-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 摄像头容器 */
+.camera-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    background: var(--card-gradient);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+#arVideo {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scaleX(-1);
+    /* 镜像显示 */
+}
+
+.camera-controls {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+.camera-controls .btn-modern {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.camera-controls .btn-modern:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* 识别方式选择 */
+.recognition-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.recognition-tabs .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: rgba(42, 157, 143, 0.1);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recognition-tabs .tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.recognition-tabs .icon {
+    font-size: 1.2rem;
+}
+
+/* 识别内容区域 */
+.recognition-content {
+    position: relative;
+}
+
+.recognition-mode {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.recognition-mode.active {
+    display: block;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 错误提示样式 */
+.error-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 59, 48, 0.9);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+}
+
+/* 结果区域动画 */
+.animate-in {
+    animation: slideUp 0.5s ease;
+}
+
+/* 动画关键帧 */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+/* 优化摄像头控制按钮 */
+.camera-controls .btn-modern {
+    min-width: 120px;
+    justify-content: center;
+}
+
+.camera-controls .btn-modern .icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+/* 识别结果样式 */
+.recognition-result {
+    margin-top: 2rem;
+}
+
+.herb-result {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.herb-result h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.herb-image {
+    max-width: 200px;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.herb-description {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.description-title {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.description-text {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
+    text-indent: 2em;
+    margin: 0;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--primary-color);
+}
+
+.error-message {
+    background: #fff2f0;
+    border: 1px solid #ffccc7;
+    color: #ff4d4f;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+/* 多结果显示样式 */
+.possible-matches {
+    margin-top: 1.5rem;
+}
+
+.match-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+}
+
+.match-item.best-match {
+    border-color: var(--primary-color);
+    background: rgba(42, 157, 143, 0.05);
+}
+
+.match-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.confidence-score {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.match-details {
+    margin-top: 1rem;
+}
+
+.result-image {
+    max-width: 200px;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+/* 历史记录卡片样式优化 */
+.history-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 150px;
+    overflow: hidden;
+}
+
+.history-card.expanded {
+    height: auto;
+}
+
+.history-image {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.history-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.history-result {
+    padding: 0.8rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+    margin-bottom: 0.8rem;
+}
+
+.history-result:not(:first-child) {
+    display: none;
+}
+
+.expanded .history-result {
+    display: block;
+}
+
+.history-result h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.history-time {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* 添加展开提示 */
+.expand-hint {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.expanded .expand-hint {
+    display: none;
+}
+
+/* 识别结果卡片样式 */
+.recognition-results {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.herb-result {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.herb-result.best-match {
+    border: 2px solid var(--primary-color);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.confidence {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* 空历史记录提示 */
+.empty-history {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+
+/* 历史记录错误处理样式 */
+.history-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.history-card img[src="assets/placeholder.png"] {
+    object-fit: contain;
+    background: #f8f9fa;
+    padding: 1rem;
+}
+
+/* 历史记录加载状态 */
+.history-loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--primary-color);
+}
+
+/* 模态框样式优化 */
+.history-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.history-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 85%;
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalFadeIn 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #f8f9fa;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    padding: 0.6rem;
+    line-height: 1;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: #f0f0f0;
+    color: #333;
+    transform: rotate(90deg);
+}
+
+/* 模态框动画 */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 历史记录详情样式优化 */
+.history-detail {
+    margin-top: 1.5rem;
+}
+
+/* 图片容器样式优化 */
+.history-image-full {
+    width: 100%;
+    height: 280px;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.history-image-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #f8f9fa;
+}
+
+/* 识别结果列表样式 */
+.history-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 单个结果项样式 */
+.history-detail .result-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.8rem;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+/* 药材名称样式 */
+.herb-name {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    flex: 1;
+}
+
+/* 可信度卡片样式 */
+.confidence-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+}
+
+/* 结果内容布局 */
+.confidence-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* 结果项容器 */
+.result-container {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+/* 可信度项样式 */
+.confidence-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.herb-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--primary-color);
+}
+
+.confidence-info {
+    flex: 1;
+}
+
+.confidence-name {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.confidence-value {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* 药材描述样式 */
+.herb-description {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    color: #666;
+    line-height: 1.6;
+}
+
+.herb-name {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+}
+
+.description-text {
+    text-indent: 2em;
+    margin: 0;
+}
+
+/* 识别说明样式 */
+.confidence-explanation {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.explanation-title {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.explanation-text {
+    color: #666;
+    line-height: 1.6;
+}
+
+.explanation-text p {
+    margin-bottom: 0.5rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .result-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .result-analysis {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1rem;
+    }
+
+    .herb-detail {
+        padding-left: 0;
+        padding-top: 1rem;
+    }
+}
+
+/* 移动端适配 */
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        padding: 1.2rem;
+    }
+
+    .history-image-full {
+        height: 200px;
+    }
+
+    .confidence-score {
+        display: block;
+    }
+}
+
+/* 相机图标样式 */
+.camera-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+    color: currentColor;
+}
+
+/* 占位图样式 */
+.placeholder-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.5;
+}
+
+/* 统一按钮样式 */
+.btn-modern {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-modern.primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-modern.secondary {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.btn-modern .icon {
+    font-size: 1.2rem;
+}
+
+/* 移除旧的按钮样式 */
+.btn.primary {
+    display: none;
+}
+
+.camera-icon {
+    display: none;
+}

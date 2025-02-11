@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册 - 养生有道</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-brand">🍵 养生有道</div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="trending.html">方剂大全</a></li>
+            <li><a href="ar.html">药材识别</a></li>
+            <li><a href="forum.html">养生社区</a></li>
+        </ul>
+    </nav>
+
+    <!-- 注册表单 -->
+    <div class="register-container">
+        <div class="register-header">
+            <h1>用户注册</h1>
+            <p>欢迎加入养生有道，开启健康生活</p>
+        </div>
+
+        <form id="registerForm" onsubmit="return handleRegister(event)">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <div class="input-wrapper">
+                    <i class="input-icon">👤</i>
+                    <input type="text" id="username" class="input-with-icon" placeholder="请输入用户名" required>
+                </div>
+                <div class="error-message">用户名不能为空</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <div class="input-wrapper">
+                    <i class="input-icon">📧</i>
+                    <input type="email" id="email" class="input-with-icon" placeholder="请输入邮箱" required>
+                </div>
+                <div class="error-message">请输入有效的邮箱地址</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">密码</label>
+                <div class="input-wrapper">
+                    <i class="input-icon">🔒</i>
+                    <input type="password" id="password" class="input-with-icon" placeholder="请输入密码" required>
+                </div>
+                <div class="password-strength">
+                    <div class="strength-bar"></div>
+                </div>
+                <div class="error-message">密码长度至少6位</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">确认密码</label>
+                <div class="input-wrapper">
+                    <i class="input-icon">🔒</i>
+                    <input type="password" id="confirmPassword" class="input-with-icon" placeholder="请再次输入密码" required>
+                </div>
+                <div class="error-message">两次输入的密码不一致</div>
+            </div>
+
+            <div class="form-group">
+                <label for="nickname">昵称（选填）</label>
+                <div class="input-wrapper">
+                    <i class="input-icon">📝</i>
+                    <input type="text" id="nickname" class="input-with-icon" placeholder="请输入昵称">
+                </div>
+            </div>
+
+            <button type="submit" class="register-btn">注册</button>
+
+            <div class="login-link">
+                已有账号？<a href="login.html">立即登录</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="auth.js"></script>
+    <script src="register.js"></script>
+</body>
+
+</html>

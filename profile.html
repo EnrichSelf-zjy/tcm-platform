@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 养生有道</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-brand">🍵 养生有道</div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="trending.html">方剂大全</a></li>
+            <li><a href="ar.html">药材识别</a></li>
+            <li><a href="forum.html">养生社区</a></li>
+            <li id="authItem"></li>
+        </ul>
+    </nav>
+
+    <!-- 个人中心主体 -->
+    <main class="profile-container">
+        <!-- 个人信息卡片 -->
+        <section class="profile-card">
+            <div class="profile-header">
+                <div class="avatar-wrapper">
+                    <div id="userAvatar" class="avatar-svg"></div>
+                    <button class="edit-avatar" onclick="triggerAvatarUpload()">
+                        <span class="icon">📷</span>
+                    </button>
+                    <input type="file" id="avatarUpload" accept="image/*" style="display: none">
+                </div>
+                <div class="user-info">
+                    <h2 id="userName">加载中...</h2>
+                    <p id="userBio">这个人很懒，什么都没写~</p>
+                    <div class="user-actions">
+                        <button class="btn-modern small" onclick="editProfile()">编辑资料</button>
+                        <button class="btn-modern small warning" onclick="showSwitchAccountModal()">切换账号</button>
+                        <button class="btn-modern small danger" onclick="logout()">退出登录</button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="postCount">0</span>
+                    <span class="stat-label">发帖</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="followingCount">0</span>
+                    <span class="stat-label">关注</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="followerCount">0</span>
+                    <span class="stat-label">粉丝</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 内容标签页 -->
+        <div class="content-tabs">
+            <button class="tab-btn active" data-tab="posts">我的帖子</button>
+            <button class="tab-btn" data-tab="favorites">我的收藏</button>
+            <button class="tab-btn" data-tab="history">浏览记录</button>
+            <button class="tab-btn" data-tab="following">关注列表</button>
+            <button class="tab-btn" data-tab="followers">粉丝列表</button>
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="content-area">
+            <!-- 我的帖子 -->
+            <div id="postsTab" class="tab-content active">
+                <div class="posts-list" id="userPosts">
+                    <!-- 帖子将通过JavaScript动态加载 -->
+                </div>
+            </div>
+
+            <!-- 我的收藏 -->
+            <div id="favoritesTab" class="tab-content">
+                <div class="favorites-list" id="userFavorites">
+                    <!-- 收藏将通过JavaScript动态加载 -->
+                </div>
+            </div>
+
+            <!-- 浏览历史 -->
+            <div id="historyTab" class="tab-content">
+                <div class="history-list" id="userHistory">
+                    <!-- 历史记录将通过JavaScript动态加载 -->
+                </div>
+            </div>
+
+            <!-- 关注列表 -->
+            <div id="followingTab" class="tab-content">
+                <div id="followingList" class="user-list"></div>
+            </div>
+
+            <!-- 粉丝列表 -->
+            <div id="followersTab" class="tab-content">
+                <div id="followersList" class="user-list"></div>
+            </div>
+
+            <!-- 账号设置 -->
+            <div id="settingsTab" class="tab-content">
+                <form id="settingsForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="nickname">昵称</label>
+                        <input type="text" id="nickname" name="nickname">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">手机号</label>
+                        <input type="tel" id="phone" name="phone" disabled>
+                        <button type="button" class="btn-modern small" onclick="changePhone()">修改</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">个人简介</label>
+                        <textarea id="bio" name="bio" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>隐私设置</label>
+                        <div class="privacy-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="showEmail">
+                                公开邮箱
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="showPhone">
+                                公开手机号
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-modern">保存修改</button>
+                        <button type="button" class="btn-modern danger" onclick="changePassword()">修改密码</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- 编辑资料模态框 -->
+    <div id="editProfileModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>编辑个人资料</h2>
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="editNickname">昵称</label>
+                    <input type="text" id="editNickname" required>
+                </div>
+                <div class="form-group">
+                    <label for="editBio">个人简介</label>
+                    <textarea id="editBio" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-modern">保存</button>
+                    <button type="button" class="btn-modern secondary" onclick="closeEditProfile()">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="auth.js"></script>
+    <script src="forum.js"></script>
+    <script src="profile.js"></script>
+</body>
+
+</html>

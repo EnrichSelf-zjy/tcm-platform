@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录/注册 - 养生有道</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-brand">🍵 养生有道</div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="trending.html">方剂大全</a></li>
+            <li><a href="ar.html">药材识别</a></li>
+            <li><a href="forum.html">养生社区</a></li>
+            <li id="authItem">
+                <!-- 这里的内容会被updateAuthUI动态更新 -->
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 认证表单 -->
+    <main class="auth-container">
+        <div class="auth-tabs">
+            <button class="tab-btn active" data-tab="login">登录</button>
+            <button class="tab-btn" data-tab="register">注册</button>
+            <button class="tab-btn" data-tab="reset">找回密码</button>
+        </div>
+
+        <!-- 登录表单 -->
+        <form id="loginForm" class="auth-form active">
+            <h2>用户登录</h2>
+            <div class="form-group">
+                <label for="loginAccount">账号</label>
+                <input type="text" id="loginAccount" name="username" autocomplete="username" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">密码</label>
+                <div class="password-input">
+                    <input type="password" id="loginPassword" name="password" autocomplete="current-password" required>
+                    <button type="button" class="toggle-password">👁️</button>
+                </div>
+            </div>
+            <div class="form-options">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="rememberMe">
+                    记住我
+                </label>
+                <a href="#" data-tab="reset" class="forgot-password">忘记密码？</a>
+            </div>
+            <button type="submit" class="btn-modern">登录</button>
+            <div class="social-login">
+                <p>社交账号登录</p>
+                <div class="social-buttons">
+                    <button class="social-btn wechat">
+                        <span class="icon">💬</span> 微信登录
+                    </button>
+                    <button class="social-btn qq">
+                        <span class="icon">💭</span> QQ登录
+                    </button>
+                </div>
+            </div>
+            <p class="form-hint">还没有账号？<a href="#" data-tab="register">立即注册</a></p>
+        </form>
+
+        <!-- 注册表单 -->
+        <form id="registerForm" class="auth-form">
+            <h2>用户注册</h2>
+            <div class="form-group">
+                <label for="registerUsername">用户名</label>
+                <input type="text" id="registerUsername" name="username" autocomplete="username" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">邮箱</label>
+                <input type="email" id="registerEmail" name="email" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">密码</label>
+                <div class="password-input">
+                    <input type="password" id="registerPassword" name="new-password" autocomplete="new-password"
+                        required>
+                    <button type="button" class="toggle-password">👁️</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">确认密码</label>
+                <div class="password-input">
+                    <input type="password" id="confirmPassword" name="confirm-password" autocomplete="new-password"
+                        required>
+                    <button type="button" class="toggle-password">👁️</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="agreeTerms" required>
+                    我已阅读并同意<a href="#" onclick="showTerms()">服务条款</a>
+                </label>
+            </div>
+            <button type="submit" class="btn-modern">注册</button>
+            <p class="form-hint">已有账号？<a href="#" data-tab="login">立即登录</a></p>
+        </form>
+
+        <!-- 找回密码表单 -->
+        <form id="resetForm" class="auth-form">
+            <h2>重置密码</h2>
+            <div class="form-group">
+                <label for="resetPhone">手机号</label>
+                <div class="phone-input">
+                    <input type="tel" id="resetPhone" name="phone" autocomplete="tel" pattern="[0-9]{11}" required>
+                    <button type="button" class="send-code" onclick="sendResetCode()">获取验证码</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="resetCode">验证码</label>
+                <input type="text" id="resetCode" name="one-time-code" autocomplete="one-time-code" pattern="[0-9]{6}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">新密码</label>
+                <div class="password-input">
+                    <input type="password" id="newPassword" name="new-password" autocomplete="new-password" required>
+                    <button type="button" class="toggle-password">👁️</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmNewPassword">确认新密码</label>
+                <div class="password-input">
+                    <input type="password" id="confirmNewPassword" name="confirm-new-password"
+                        autocomplete="new-password" required>
+                    <button type="button" class="toggle-password">👁️</button>
+                </div>
+            </div>
+            <button type="submit" class="btn-modern">重置密码</button>
+            <p class="form-hint">想起密码了？<a href="#" data-tab="login">返回登录</a></p>
+        </form>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="auth.js"></script>
+    <script src="login.js"></script>
+</body>
+
+</html>

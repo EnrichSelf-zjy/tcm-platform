@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配方创作工坊 - 养生有道</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="submit.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-brand">🍵 养生有道</div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="trending.html">方剂大全</a></li>
+            <li><a href="ar.html">药材识别</a></li>
+            <li><a href="forum.html">养生社区</a></li>
+            <li id="authItem"></li>
+        </ul>
+        <button class="mobile-menu-btn">☰</button>
+    </nav>
+
+    <div class="workshop-container">
+        <h1 class="gradient-text">配方创作工坊</h1>
+
+        <div class="submit-form">
+            <div class="form-group">
+                <label>方剂名称</label>
+                <input type="text" id="formulaName" placeholder="为你的配方起个名字">
+            </div>
+
+            <div class="form-group">
+                <label>配方组成</label>
+                <div id="ingredients" class="ingredients-list">
+                    <div class="ingredient-item">
+                        <select class="herb-select"></select>
+                        <input type="text" placeholder="用量" class="amount-input">
+                        <button class="remove-btn">×</button>
+                    </div>
+                </div>
+                <button class="btn-modern" onclick="addIngredient()">添加药材</button>
+            </div>
+
+            <div class="form-group">
+                <label>功效说明</label>
+                <textarea id="efficacy" placeholder="描述配方的功效与作用"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>使用建议</label>
+                <textarea id="usage" placeholder="详细的使用方法和注意事项"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>配伍理论依据</label>
+                <textarea id="theory" placeholder="说明方剂配伍的理论依据"></textarea>
+            </div>
+
+            <button class="btn-submit" onclick="submitFormula()">提交审核</button>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="submit.js"></script>
+</body>
+
+</html>

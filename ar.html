@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>药材识别 - 养生有道</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ar.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-brand">🍵 养生有道</div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="trending.html">方剂大全</a></li>
+            <li><a href="ar.html" class="active">药材识别</a></li>
+            <li><a href="forum.html">养生社区</a></li>
+            <li id="authItem"></li>
+        </ul>
+    </nav>
+
+    <!-- 主体内容 -->
+    <main class="ar-container">
+        <!-- 识别区域 -->
+        <section class="recognition-section">
+            <h2>中药材智能识别</h2>
+            <p class="description">支持拍照识别和图片上传两种方式</p>
+
+            <!-- 识别方式选择 -->
+            <div class="recognition-tabs">
+                <button class="tab-btn active" data-mode="camera">
+                    <span class="icon">📸</span> 拍照识别
+                </button>
+                <button class="tab-btn" data-mode="upload">
+                    <span class="icon">📁</span> 图片上传
+                </button>
+            </div>
+
+            <!-- 识别内容区域 -->
+            <div class="recognition-content">
+                <!-- 摄像头预览 -->
+                <div class="recognition-mode active" id="cameraMode">
+                    <div class="camera-container">
+                        <video id="arVideo" autoplay playsinline></video>
+                        <div class="camera-controls">
+                            <button id="captureBtn" class="btn-modern primary">
+                                <span class="icon">📸</span> 拍照识别
+                            </button>
+                            <button class="btn-modern secondary" id="switchCameraBtn">
+                                <span class="icon">🔄</span> 切换摄像头
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图片上传 -->
+                <div class="recognition-mode" id="uploadMode">
+                    <div class="upload-area" id="uploadArea">
+                        <div id="uploadPlaceholder">
+                            <img src="assets/icons/upload.svg" alt="上传图片" class="upload-icon">
+                            <p>点击或拖拽图片到此处</p>
+                        </div>
+                        <img id="previewImage" style="display: none;">
+                        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                    </div>
+                    <button class="btn-modern" id="recognizeBtn" disabled>开始识别</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 识别结果 -->
+        <section class="result-section" id="resultSection" style="display: none;">
+            <h3>识别结果</h3>
+            <div class="result-content">
+                <div class="result-item">
+                    <span class="label">药材名称：</span>
+                    <span class="value" id="herbName">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">可信度：</span>
+                    <span class="value" id="confidence">-</span>
+                </div>
+                <div class="result-detail" id="herbDetail">
+                    <!-- 详细信息将通过JavaScript动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 识别历史 -->
+        <section class="history-section">
+            <h3>识别历史</h3>
+            <div class="history-list" id="historyList">
+                <!-- 历史记录将通过JavaScript动态加载 -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>正在识别中...</p>
+    </div>
+
+    <!-- 在现有的拍照/上传部分后添加 -->
+    <div id="loading" class="loading" style="display: none;">
+        识别中...请稍候
+    </div>
+
+    <div id="error" class="error-message" style="display: none;"></div>
+
+    <!-- 在body末尾添加 -->
+    <div class="history-modal" id="historyModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeHistoryModal()">×</button>
+            <h3>识别详情</h3>
+            <div class="history-detail" id="historyDetail">
+                <!-- 详细内容将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="auth.js"></script>
+    <script src="ar.js"></script>
+</body>
+
+</html>

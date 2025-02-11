@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理后台 - 养生有道</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <!-- 管理员导航栏 -->
+    <nav class="admin-nav">
+        <div class="nav-brand">⚡️ 管理后台</div>
+        <ul class="nav-links">
+            <li><a href="#pending" class="active">待审核</a></li>
+            <li><a href="#approved">已通过</a></li>
+            <li><a href="#rejected">已拒绝</a></li>
+            <li><a href="index.html">返回前台</a></li>
+        </ul>
+    </nav>
+
+    <div class="admin-container">
+        <!-- 数据概览 -->
+        <div class="stats-panel">
+            <div class="stat-card">
+                <h3>待审核</h3>
+                <span id="pendingCount">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>今日审核</h3>
+                <span id="todayCount">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>总投稿</h3>
+                <span id="totalCount">0</span>
+            </div>
+        </div>
+
+        <!-- 审核列表 -->
+        <div class="review-panel">
+            <div class="panel-header">
+                <h2>待审核配方</h2>
+                <div class="filter-controls">
+                    <select id="sortBy">
+                        <option value="time">按时间排序</option>
+                        <option value="user">按用户排序</option>
+                    </select>
+                    <button class="btn-modern" onclick="batchApprove()">批量通过</button>
+                </div>
+            </div>
+            <div id="pendingList" class="formula-list"></div>
+        </div>
+    </div>
+
+    <!-- 审核对话框 -->
+    <div id="reviewDialog" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>审核意见</h3>
+            <textarea id="reviewComment" placeholder="请输入审核意见（选填）"></textarea>
+            <div class="button-group">
+                <button class="btn-approve" onclick="approveFormula()">通过</button>
+                <button class="btn-reject" onclick="rejectFormula()">拒绝</button>
+                <button class="btn-cancel" onclick="closeDialog()">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>

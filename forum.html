@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>养生社区 - 养生有道</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="forum.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-brand">🍵 养生有道</div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="trending.html">方剂大全</a></li>
+            <li><a href="ar.html">药材识别</a></li>
+            <li><a href="forum.html" class="active">养生社区</a></li>
+            <li id="authItem"></li>
+        </ul>
+    </nav>
+
+    <!-- 社区主体 -->
+    <main class="forum-container">
+        <!-- 发帖按钮 -->
+        <div class="post-actions">
+            <button class="btn-modern" onclick="showPostForm()">
+                <span class="icon">✍️</span> 发布帖子
+            </button>
+        </div>
+
+        <!-- 帖子筛选 -->
+        <div class="filter-section">
+            <div class="filter-tabs">
+                <button class="tab-btn active" data-filter="all">全部</button>
+                <button class="tab-btn" data-filter="trending">热门</button>
+                <button class="tab-btn" data-filter="latest">最新</button>
+                <button class="tab-btn" data-filter="following">关注</button>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索帖子...">
+                <button class="btn-modern">搜索</button>
+            </div>
+        </div>
+
+        <!-- 帖子列表 -->
+        <div class="posts-container" id="postsContainer">
+            <!-- 帖子将通过JavaScript动态加载 -->
+        </div>
+
+        <!-- 加载更多 -->
+        <div class="load-more">
+            <button class="btn-modern secondary" onclick="loadMorePosts()">加载更多</button>
+        </div>
+    </main>
+
+    <!-- 发帖表单模态框 -->
+    <div id="postFormModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>发布帖子</h2>
+            <form id="postForm">
+                <div class="form-group">
+                    <label for="postTitle">标题</label>
+                    <input type="text" id="postTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="postContent">内容</label>
+                    <textarea id="postContent" rows="6" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="postTags">标签（用逗号分隔）</label>
+                    <input type="text" id="postTags" placeholder="例如：养生,茶饮,食疗">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-modern">发布</button>
+                    <button type="button" class="btn-modern secondary" onclick="closePostForm()">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="auth.js"></script>
+    <script src="forum.js"></script>
+    <script>
+        // 点赞处理
+        async function handleLike(event, postId) {
+            try {
+                const result = await forumInteraction.toggleLike(postId, currentUser.id);
+                const btn = event.currentTarget;
+                btn.classList.toggle('liked', result.liked);
+                btn.querySelector('.like-count').textContent = result.count;
+            } catch (error) {
+                alert('点赞失败：' + error.message);
+            }
+        }
+
+        // 显示评论
+        async function handleShowComments(event, postId) {
+            try {
+                const comments = await forumInteraction.showComments(postId);
+                const commentsContainer = document.querySelector(`#comments-${postId}`);
+                commentsContainer.innerHTML = comments.map(comment => `
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">${comment.author}</span>
+                        <span class="comment-time">${formatTime(comment.createTime)}</span>
+                    </div>
+                    <div class="comment-content">${comment.content}</div>
+                    ${comment.authorId === currentUser.id ? `
+                        <button onclick="handleDeleteComment('${postId}', '${comment.id}')" class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    ` : ''}
+                </div>
+            `).join('');
+                commentsContainer.style.display = 'block';
+            } catch (error) {
+                alert('加载评论失败：' + error.message);
+            }
+        }
+    </script>
+</body>
+
+</html>
