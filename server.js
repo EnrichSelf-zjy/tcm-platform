@@ -6,6 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));  // 增加限制以处理大图片
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(express.static(__dirname));
 
 // 代理获取token的请求
 app.get('/api/token', async (req, res) => {

@@ -1,3 +1,19 @@
+/* 添加全局样式变量 */
+:root {
+  --nav-gradient: linear-gradient(135deg, #2A9D8F 0%, #264653 100%);
+  --card-gradient: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  --primary-color: #2A9D8F;
+  --accent-color: #E76F51;
+  --text-color: #264653;
+}
+
+/* 确保基础样式正确加载 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
 /* 管理后台样式 */
 .admin-nav {
     background: var(--nav-gradient);
@@ -223,3 +239,7 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+/* 检查样式文件是否正确加载 */
+/* 确保样式权重合适 */
+/* 检查媒体查询是否正确响应 */
