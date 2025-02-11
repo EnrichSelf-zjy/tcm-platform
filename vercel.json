@@ -19,9 +19,5 @@
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ],
-  "env": {
-    "API_KEY": "@api-key",
-    "API_SECRET": "@api-secret"
-  }
+  ]
 } 

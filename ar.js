@@ -5,12 +5,12 @@ const CONFIG = {
 
 // API配置
 const API_CONFIG = {
-    // 替换为你的API Key和Secret Key
-    API_KEY: 'GBjgXSot6OHyg5kFBEDvvP7T',
-    SECRET_KEY: 'q8WKeLToVIev7znNE0tl1ciIUfIDo3BJ',
-    // API接口地址改为本地代理服务器地址
-    AUTH_URL: 'http://localhost:3001/api/token',
-    PLANT_DETECT_URL: 'http://localhost:3001/api/identify'
+    // 使用环境变量
+    API_KEY: process.env.API_KEY || 'GBjgXSot6OHyg5kFBEDvvP7T',
+    SECRET_KEY: process.env.API_SECRET || 'q8WKeLToVIev7znNE0tl1ciIUfIDo3BJ',
+    // 使用相对路径
+    AUTH_URL: '/api/token',
+    PLANT_DETECT_URL: '/api/identify'
 };
 
 // 初始化
