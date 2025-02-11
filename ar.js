@@ -5,21 +5,32 @@ const CONFIG = {
 
 // API配置
 const API_CONFIG = {
-    // 使用环境变量
-    API_KEY: process.env.API_KEY || 'GBjgXSot6OHyg5kFBEDvvP7T',
-    SECRET_KEY: process.env.API_SECRET || 'q8WKeLToVIev7znNE0tl1ciIUfIDo3BJ',
-    // 使用部署后的域名
-    AUTH_URL: 'https://your-vercel-domain.vercel.app/api/token',
-    PLANT_DETECT_URL: 'https://your-vercel-domain.vercel.app/api/identify'
+    // 从配置API获取配置
+    API_KEY: '', // 将在初始化时设置
+    SECRET_KEY: '', // 将在初始化时设置
+    // 使用相对路径，避免硬编码域名
+    AUTH_URL: '/api/token',
+    PLANT_DETECT_URL: '/api/identify'
 };
 
 // 初始化
-document.addEventListener('DOMContentLoaded', () => {
-    initAuth();
-    initRecognitionTabs();
-    initCamera();
-    initUpload();
-    loadHistory();
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // 获取配置
+        const config = await getConfig();
+        // 更新API配置
+        Object.assign(API_CONFIG, config);
+        
+        // 初始化其他功能
+        initAuth();
+        initRecognitionTabs();
+        initCamera();
+        initUpload();
+        loadHistory();
+    } catch (error) {
+        console.error('初始化失败:', error);
+        showError('系统初始化失败，请刷新页面重试');
+    }
 });
 
 /**
@@ -666,6 +677,9 @@ async function getAccessToken() {
     try {
         const response = await fetch(API_CONFIG.AUTH_URL);
         const result = await response.json();
+        if (result.error) {
+            throw new Error(result.error);
+        }
         return result.access_token;
     } catch (error) {
         console.error('获取token失败:', error);
@@ -702,13 +716,9 @@ async function identifyHerb(base64Image, accessToken) {
         });
 
         const result = await response.json();
-        console.log('API返回的原始结果:', result);
-
         if (result.error) {
             throw new Error(result.error);
         }
-
-        // 直接返回API结果，不进行处理
         return result;
     } catch (error) {
         console.error('识别失败:', error);

@@ -1,6 +1,12 @@
 {
   "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": ".",
   "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
     {
       "src": "*.html",
       "use": "@vercel/static"
@@ -11,15 +17,18 @@
     },
     {
       "src": "*.js",
-      "use": "@vercel/static"
+      "use": "@vercel/static",
+      "config": {
+        "includeFiles": [
+          "ar.js",
+          "app.js",
+          "data.js"
+        ]
+      }
     },
     {
       "src": "assets/**",
       "use": "@vercel/static"
-    },
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
     }
   ],
   "routes": [

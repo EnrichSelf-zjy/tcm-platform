@@ -61,10 +61,11 @@ app.post('/api/identify', async (req, res) => {
 
 // 添加配置接口
 app.get('/api/config', (req, res) => {
-    // 只返回前端需要的安全配置
     res.json({
         apiEndpoint: 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant',
-        // 其他公开配置...
+        // 不要返回敏感信息
+        AUTH_URL: '/api/token',
+        PLANT_DETECT_URL: '/api/identify'
     });
 });
 
