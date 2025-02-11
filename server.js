@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const app = express();
+require('dotenv').config();
 
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));  // 增加限制以处理大图片
@@ -14,8 +15,8 @@ app.get('/api/token', async (req, res) => {
         const response = await axios.get('https://aip.baidubce.com/oauth/2.0/token', {
             params: {
                 grant_type: 'client_credentials',
-                client_id: 'GBjgXSot6OHyg5kFBEDvvP7T',
-                client_secret: 'q8WKeLToVIev7znNE0tl1ciIUfIDo3BJ'
+                client_id: process.env.API_KEY,
+                client_secret: process.env.API_SECRET
             }
         });
         res.json(response.data);
