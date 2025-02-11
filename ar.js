@@ -805,4 +805,25 @@ async function handleImage(file) {
         showError(error.message);
         hideLoading();
     }
+}
+
+// 改为通过API获取配置
+async function getConfig() {
+    try {
+        const response = await fetch('/api/config');
+        return await response.json();
+    } catch (error) {
+        console.error('获取配置失败:', error);
+        throw error;
+    }
+}
+
+// 使用配置
+async function initializeAR() {
+    try {
+        const token = await getToken();
+        // 使用token进行后续操作
+    } catch (error) {
+        console.error('初始化失败:', error);
+    }
 } 

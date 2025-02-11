@@ -59,6 +59,15 @@ app.post('/api/identify', async (req, res) => {
     }
 });
 
+// 添加配置接口
+app.get('/api/config', (req, res) => {
+    // 只返回前端需要的安全配置
+    res.json({
+        apiEndpoint: 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant',
+        // 其他公开配置...
+    });
+});
+
 // 错误处理中间件
 app.use((err, req, res, next) => {
     console.error('服务器错误:', err);
